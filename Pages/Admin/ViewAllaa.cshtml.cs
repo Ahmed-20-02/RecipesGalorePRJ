@@ -1,25 +1,29 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using RecipesGalorePRJ.Models;
 
 namespace RecipesGalorePRJ.Pages.Admin
 {
-    public class SearchPageAModel : PageModel
+    public class ViewAllaaModel : PageModel
     {
+        public List<Recipe> RecipeList { get; set; }
 
-        public List<Recipe> RecipeList = new List<Recipe>();
+        [BindProperty(SupportsGet = true)]
+        public string FLTR { get; set; }
 
-        [BindProperty]
-        public string SearchString { get; set; }
+        public List<string> FilterType { get; set; } = new List<string> { "Halal", "Vegetarian", "Vegan" };
 
         public void OnGet()
         {
-
+            ViewRecipes();
         }
 
-        public void OnPost()
+        public void ViewRecipes()
         {
             string DbConnection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=7b/cDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
@@ -29,15 +33,14 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-
-                if (string.IsNullOrEmpty(SearchString))
+                if (string.IsNullOrEmpty(FLTR) || FLTR == "All")
                 {
-                    command.CommandText = @"SELECT * FROM Recipes WHERE RecipeName = t";
+                    command.CommandText = @"SELECT * FROM Recipes";
                 }
                 else
                 {
-                    command.CommandText = @"SELECT * FROM Recipes WHERE (RecipeName LIKE '%' + @SearchS) OR (RecipeName LIKE @SearchS + '%')";
-                    command.Parameters.AddWithValue("@SearchS", SearchString);
+                    command.CommandText += @"SELECT * FROM Recipes WHERE FilterType = @FilterT";
+                    command.Parameters.AddWithValue("@FilterT", FLTR);
                 }
 
                 SqlDataReader reader = command.ExecuteReader(); //SqlDataReader is used to read record from a table
@@ -52,12 +55,6 @@ namespace RecipesGalorePRJ.Pages.Admin
                     RecipeList.Add(r);
                 }
                 reader.Close();
-                if (RecipeList.Count == 0)
-                {
-                    Recipe r = new Recipe();
-                    r.RecipeName = "Could Not Find Recipe";
-                    RecipeList.Add(r);
-                }
             }
         }
     }
