@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RecipesGalorePRJ.Models;
+using RecipesGalorePRJ.Pages.DBConnection;
 
-namespace RecipesGalorePRJ.Pages.User
+namespace RecipesGalorePRJ.Pages.Admin
 {
-    public class ViewAllUModel : PageModel
+    public class AdminViewAllRecipes : PageModel
     {
-        public List<Recipe> RecipeList { get; set; }
-
+        public List<RecipeModel> RecipeList { get; set; }
+        public DatabaseConnection connection;
         [BindProperty(SupportsGet = true)]
         public string FLTR { get; set; }
-
         public List<string> FilterType { get; set; } = new List<string> { "Halal", "Vegetarian", "Vegan" };
 
         public void OnGet()
@@ -25,7 +25,8 @@ namespace RecipesGalorePRJ.Pages.User
 
         public void ViewRecipes()
         {
-            string DbConnection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=7b/cDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connection = new DatabaseConnection();
+            string DbConnection = connection.DatabaseConn();
 
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
@@ -43,16 +44,22 @@ namespace RecipesGalorePRJ.Pages.User
                     command.Parameters.AddWithValue("@FilterT", FLTR);
                 }
 
-                SqlDataReader reader = command.ExecuteReader(); //SqlDataReader is used to read record from a table
+                SqlDataReader reader = command.ExecuteReader();
 
-                RecipeList = new List<Recipe>(); //this object of list is created to populate all records from the table
+                RecipeList = new List<RecipeModel>();
 
                 while (reader.Read())
                 {
-                    Recipe r = new Recipe();
-                    r.RecipeName = reader.GetString(1); //getting the second field from the table
-                    r.File = reader.GetString(7);
-                    RecipeList.Add(r);
+                    RecipeModel rec = new RecipeModel();
+                    rec.RecipeId = reader.GetInt32(0);
+                    rec.RecipeName = reader.GetString(1);
+                    rec.RecipeCuisineType = reader.GetString(2);
+                    rec.RecipeCookingTime = reader.GetString(3);
+                    rec.RecipeIngredients = reader.GetString(4);
+                    rec.RecipeMethod = reader.GetString(5);
+                    rec.File = reader.GetString(7);
+
+                    RecipeList.Add(rec);
                 }
                 reader.Close();
             }

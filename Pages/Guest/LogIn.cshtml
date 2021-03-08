@@ -1,4 +1,25 @@
 ﻿@page
-@model RecipesGalorePRJ.Pages.Guest.LogInModel
+@model RecipesGalorePRJ.Pages.Guest.LoginModel
 @{
+    ViewData["Title"] = "Log In";
+    Layout = "GuestLayout";
 }
+<div class="login-container">
+    <form method="post" class="log-in-form">
+        <div class="message">
+            @Model.Message
+        </div>
+        <p>Please enter your email address and password to log in.</p>
+        <div class="log-in-details">
+            <label>Email Address:</label>
+            <input asp-for="user.Email" type="text">
+        </div>
+        <div class="log-in-details">
+            <label class="log-in-label">Password:</label>
+            <input asp-for="user.Password" type="password">
+        </div>
+        <button type="submit" value="Login">Log In</button>
+        <p>Don't have an account? <a asp-page="/Guest/SignUp">Sign Up</a></p>
+        <img src="~/Images/recipes-galore-logo.png" class="Logo">
+    </form>
+</div>

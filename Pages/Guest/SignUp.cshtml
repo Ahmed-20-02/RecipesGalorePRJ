@@ -1,4 +1,25 @@
 ﻿@page
 @model RecipesGalorePRJ.Pages.Guest.SignUpModel
 @{
+    ViewData["Title"] = "Sign Up";
+    Layout = "GuestLayout";
 }
+<div class="sign-up-container">
+    <form method="post" class="sign-up-form">
+        <div class="sign-up-details">
+            <label class="sign-up-label">First Name:</label>
+            <input asp-for="user.Name" />
+        </div>
+        <div class="sign-up-details">
+            <label class="sign-up-label">Email Address:</label>
+            <input asp-for="user.Email" />
+        </div>
+        <div class="sign-up-details">
+            <label class="sign-up-label">Password:</label>
+            <input asp-for="user.Password"/>
+        </div>
+        <button class="create-account" type="submit">Create Account</button>
+        <a class="sign-up-back-button" asp-page="/Guest/Login">Back</a>
+        <img src="~/Images/recipes-galore-logo.png" class="Logo">
+    </form>
+</div>

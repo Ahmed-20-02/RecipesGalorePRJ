@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RecipesGalorePRJ.Models
 {
-    public class User
+    public class UserModel
     {
         public int Id { get; set; }
 

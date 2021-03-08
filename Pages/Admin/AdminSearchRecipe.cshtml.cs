@@ -1,29 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using RecipesGalorePRJ.Models;
+using RecipesGalorePRJ.Pages.DBConnection;
 
-namespace RecipesGalorePRJ.Pages.User
+namespace RecipesGalorePRJ.Pages.Admin
 {
-    public class SearchPageModel : PageModel
+    public class AdminSearchRecipe : PageModel
     {
-        public List<Recipe> RecipeList = new List<Recipe>();
+
+        public List<RecipeModel> RecipeList = new List<RecipeModel>();
+        public DatabaseConnection connection;
 
         [BindProperty]
         public string SearchString { get; set; }
 
-        public void OnGet()
-        {
-
-        }
-
         public void OnPost()
         {
-            string DbConnection = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=7b/cDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connection = new DatabaseConnection();
+            string DbConnection = connection.DatabaseConn();
 
             SqlConnection conn = new SqlConnection(DbConnection);
             conn.Open();
@@ -42,21 +38,25 @@ namespace RecipesGalorePRJ.Pages.User
                     command.Parameters.AddWithValue("@SearchS", SearchString);
                 }
 
-                SqlDataReader reader = command.ExecuteReader(); //SqlDataReader is used to read record from a table
+                SqlDataReader reader = command.ExecuteReader();
 
-                RecipeList = new List<Recipe>(); //this object of list is created to populate all records from the table
+                RecipeList = new List<RecipeModel>();
 
                 while (reader.Read())
                 {
-                    Recipe r = new Recipe();
-                    r.RecipeName = reader.GetString(1); //getting the second field from the table
-                    r.File = reader.GetString(7);
+                    RecipeModel r = new RecipeModel();
+                    r.RecipeName = reader.GetString(1);
+                    r.RecipeCuisineType = reader.GetString(2);
+                    r.RecipeCookingTime = reader.GetString(3);
+                    r.RecipeIngredients = reader.GetString(4);
+                    r.RecipeMethod = reader.GetString(5);
+                    r.File = reader.GetString(6);
                     RecipeList.Add(r);
                 }
                 reader.Close();
                 if (RecipeList.Count == 0)
                 {
-                    Recipe r = new Recipe();
+                    RecipeModel r = new RecipeModel();
                     r.RecipeName = "Could Not Find Recipe";
                     RecipeList.Add(r);
                 }

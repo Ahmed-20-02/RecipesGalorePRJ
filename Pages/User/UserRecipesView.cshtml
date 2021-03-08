@@ -1,0 +1,21 @@
+﻿@page
+@model RecipesGalorePRJ.Pages.User.UserRecipesViewModel
+@{
+    ViewData["Title"] = Model.RecipeClass.RecipeName;
+    Layout = "UserLayout";
+}
+<input type="hidden" asp-for="RecipeClass.RecipeId" />
+<div class="recipe-container" style="display: flex; justify-content: space-between;">
+    <div class="recipe-left-column" style="padding: 50px;">
+        <img class="recipe-image" src="~/Files/@Model.RecipeClass.File" style="width: 450px; height: 300px;" />
+        <p>Cooking Time: @Model.RecipeClass.RecipeCookingTime Minutes</p>
+    </div>
+    <div class="recipe-middle-column" style="padding: 50px">
+        <h4>Ingredients</h4>
+        <p>@Model.RecipeClass.RecipeIngredients</p>
+    </div>
+    <div class="recipe-right-column" style="padding: 50px">
+        <h4>Method</h4>
+        <p>@Model.RecipeClass.RecipeMethod</p>
+    </div>
+</div>

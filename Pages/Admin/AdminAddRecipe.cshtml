@@ -1,0 +1,38 @@
+﻿@page
+@model RecipesGalorePRJ.Pages.Admin.AdminAddRecipeModel
+@{
+    ViewData["Title"] = "Admin Add Recipe";
+    Layout = "AdminLayout";
+}
+<div class="add-recipe-container">
+    <form method="post" class="add-recipe-form" enctype="multipart/form-data">
+        <div class="add-recipe-details">
+            <label class="add-recipe-label">Recipe Name:</label>
+            <input asp-for="recipe.RecipeName" />
+        </div>
+        <div class="add-recipe-details">
+            <label class="add-recipe-label">Recipe Cuisine Type:</label>
+            <input asp-for="recipe.RecipeCuisineType" />
+        </div>
+        <div class="add-recipe-details">
+            <label class="add-recipe-label">Recipe Cooking Time:</label>
+            <input asp-for="recipe.RecipeCookingTime" />
+        </div>
+        <div class="add-recipe-details">
+            <label class="add-recipe-label">Recipe Method:</label>
+            <input asp-for="recipe.RecipeIngredients" />
+        </div>
+        <div class="add-recipe-details">
+            <label class="add-recipe-label">Recipe Ingredients:</label>
+            <input asp-for="recipe.RecipeMethod" />
+        </div>
+        <div class="add-recipe-details">
+            <label class="add-recipe-label">Recipe File:</label>
+            <input type="file" asp-for="RecipeFile" onchange="readURL(this)" accept="image/*" />
+        </div>
+        <div class="add-recipe-details">
+            <img id="Img" src="" style="width: 200px;" />
+        </div>
+        <input class="create-recipe" type="submit">Create Recipe</>
+    </form>
+</div>

@@ -1,0 +1,262 @@
+/* Global -------------------------------------------------------------------------------------------------------------------------- */
+body {
+    margin: 0px;
+    color: white;
+}
+#container {
+    width: auto;
+    margin: auto;
+    background-color: #260E5B;
+    font-size: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Logo, title and account -------------------------------------------------------------------------------------------------------------------------- */
+.header {
+    border-bottom: 3px solid white;
+    padding: 25px;
+}
+.header a {
+    text-decoration: none;
+    color: white;
+}
+.header-logo-title-account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.account {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+}
+.account a {
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 50px;
+}
+.account a:hover {
+    background-color: #100d38;
+    transition: 0.3s;
+    color: grey;
+    border: 2px solid grey;
+}
+.account img {
+    padding-bottom: 10px;
+    width: 120px;
+    height: 120px;
+}
+.Logo {
+    width: 120px; 
+    height: 120px;
+}
+/* Navigation bar and drop down menu -------------------------------------------------------------------------------------------------------------------------- */
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.navigation a {
+    padding: 40px;
+}
+.navigation a:hover {
+    background-color: #100d38;
+    transition: 0.3s;
+    color: grey;
+}
+.dropdown-nav {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+}
+.dropdown-content a {
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #100d38;
+    color: grey;
+}
+.dropdown-content p {
+    border-bottom: 2px solid lightgrey;
+    color: lightgrey;
+}
+.dropdown-nav:hover .dropdown-content {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    margin-top: 40px;
+    background-color: #260E5B;
+    border: 2px solid white;
+    padding: 20px;
+    justify-content: space-between;
+    text-align: center;
+}
+.dropdown-cooking {
+    width: 250px;
+}
+.dropdown-dietary {
+    width: 250px;
+}
+.dropdown-baking {
+    width: 250px;
+}
+.searchBox {
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 50px;
+}
+.searchBox:hover {
+    background-color: lightgrey;
+    transition: 0.3s;
+}
+/* Homepage -------------------------------------------------------------------------------------------------------------------------- */
+section {
+    padding: 50px;
+    color: white;
+}
+.main-content {
+    display: flex;
+    flex-direction: row;
+}
+.left-panel {
+    padding-right: 50px;
+    text-align: center;
+}
+.left-panel-menu {
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.left-panel-menu a {
+    color: white;
+    display: inline;
+    padding: 10px;
+    border: 2px white solid;
+    border-radius: 25px;
+    text-decoration: none;
+}
+.left-panel-menu a:hover {
+    background-color: #100d38;
+    transition: 0.3s;
+    color: grey;
+}
+.right-panel {
+    padding-left: 50px;
+}
+
+/* Log In -------------------------------------------------------------------------------------------------------------------------- */
+.message {
+    color: red;
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container > form > button {
+    padding: 10px 50px;
+}
+.login-container > form > button:hover {
+    background-color: lightgrey;
+    transition: 0.3s;
+}
+.login-container > form > p > a {
+    color: white;
+}
+.login-container > form > p > a:hover {
+    transition: 0.3s;
+    color: grey;
+}
+.log-in-form {
+    text-align: center;
+    align-items: center;
+    width: 500px;
+}
+.log-in-form > div > input:hover {
+    background-color: lightgrey;
+    transition: 0.3s;
+}
+.log-in-details {
+    padding-bottom: 20px;
+    padding-right: 70px;
+}
+
+.log-in-label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+/* Contact Us -------------------------------------------------------------------------------------------------------------------------- */
+
+/* Sign Up -------------------------------------------------------------------------------------------------------------------------- */
+.sign-up-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.sign-up-details {
+    padding-bottom: 20px;
+    padding-right: 80px;
+}
+.sign-up-form {
+    text-align: center;
+    align-items: center;
+    width: 500px;
+    height: auto;
+}
+.sign-up-form > div > input:hover {
+    background-color: lightgrey;
+    transition: 0.3s;
+}
+.sign-up-label {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+}
+.create-account {
+    padding: 10px 15px;
+}
+.create-account:hover {
+    background-color: lightgrey;
+    transition: 0.3s;
+}
+div > form > a {
+    color: white;
+    display: block;
+    margin-top: 20px;
+}
+div > form > a:hover {
+    transition: 0.3s;
+    color: grey;
+}
+
+/* View all */
+.log-out-container {
+    display: flex;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.Log-in-log-out-atag {
+    color: white;
+    display: block;
+    padding: 10px;
+}
+.Log-in-log-out-atag:hover {
+    background-color: #100d38;
+    transition: 0.3s;
+    color: grey;
+}
+/* Footer -------------------------------------------------------------------------------------------------------------------------- */
+footer {
+    text-align: center;
+    height: 100px;
+}

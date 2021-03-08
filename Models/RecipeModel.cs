@@ -6,28 +6,15 @@ using System.Threading.Tasks;
 
 namespace RecipesGalorePRJ.Models
 {
-    public class Recipe
+    public class RecipeModel
     {
-        
         public int RecipeId { get; set; }
-
-        [Display(Name = "Recipe Name")]
         public string RecipeName { get; set; }
-
-        [Display(Name = "Recipe Ingredients")]
         public string RecipeCuisineType { get; set; }
-
-        [Display(Name = "Recipe Cook Time")]
-        public int RecipeCookingTime { get; set; }
-
-        [Display(Name = "Recipe Ingredients")]
+        public string RecipeCookingTime { get; set; }
         public string RecipeIngredients { get; set; }
-
-        [Display(Name = "Recipe Method")]
         public string RecipeMethod { get; set; }
-
         public string File { get; set; }
-
-        public User Creator { get; set; }
+        public UserModel Creator { get; set; }
     }
 }

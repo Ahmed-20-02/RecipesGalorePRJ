@@ -1,8 +1,8 @@
 ﻿@page
-@model RecipesGalorePRJ.Pages.IndexModel
+@model RecipesGalorePRJ.Pages.User.UserViewAllRecipesModel
 @{
     ViewData["Title"] = "View All Recipes";
-    Layout = "GuestLayout";
+    Layout = "UserLayout";
 }
 <div class="View-All-Recipes-Title">
     @ViewData["Title"]
@@ -18,16 +18,16 @@
             </a>
         </div>
     }
-    <div class="filter box">
-        <form>
-            <select type="text" asp-for="FLTR" style="width: 50px;">
-                <option>All</option>
-                @foreach (var item in Model.FilterType)
-                {
-                    <option>@item</option>
-                }
-            </select>
-            <input type="submit" value="Filter" />
-        </form>
-    </div>
+<div class="filter box">
+    <form>
+        <select type="text" asp-for="FLTR" style="width: 50px;">
+            <option>All</option>
+            @foreach (var item in Model.FilterType)
+            {
+                <option>@item</option>
+            }
+        </select>
+        <input type="submit" value="Filter" />
+    </form>
+</div>
 </div>
