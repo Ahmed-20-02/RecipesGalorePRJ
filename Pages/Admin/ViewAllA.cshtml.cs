@@ -11,6 +11,7 @@ namespace RecipesGalorePRJ.Pages.Admin
     {
         public void OnGet()
         {
+
         }
     }
 }
