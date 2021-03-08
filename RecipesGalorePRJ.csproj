@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Pages\Admin\" />
+    <Folder Include="Pages\Guest\" />
+    <Folder Include="Pages\User\" />
   </ItemGroup>
 
 </Project>
