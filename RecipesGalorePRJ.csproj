@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="AppData\" />
     <Folder Include="wwwroot\Files\" />
   </ItemGroup>
