@@ -1,0 +1,18 @@
+﻿@page
+@model RecipesGalorePRJ.Pages.Admin.AdminDeleteRecipeModel
+@{
+    ViewData["Title"] = "Delete Recipe";
+}
+<div>
+    <h4>Are you sure you want to delete this recipe?</h4>
+    <div>
+        <img src="~/Files/@Model.recipeDelete.File" style="height: 150px; width: 250px;" />
+        <p>@Model.recipeDelete.RecipeName</p>
+        <p>@Model.recipeDelete.RecipeCuisineType</p>
+        <p>@Model.recipeDelete.RecipeCuisineType</p>
+    </div>
+    <form method="post">
+        <input type="hidden" asp-for="recipeDelete.RecipeId" />
+        <input type="submit" value="Delete" />
+    </form>
+</div>
