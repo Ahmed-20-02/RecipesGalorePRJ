@@ -8,13 +8,13 @@ namespace RecipesGalorePRJ.Models
 {
     public class RecipeModel
     {
-        public int RecipeId { get; set; }
-        public string RecipeName { get; set; }
-        public string RecipeCuisineType { get; set; }
-        public string RecipeCookingTime { get; set; }
-        public string RecipeIngredients { get; set; }
-        public string RecipeMethod { get; set; }
+        public int RecipeID { get; set; }
+        public string Name { get; set; }
+        public string CuisineType { get; set; }
+        public string CookingTime { get; set; }
+        public string Ingredients { get; set; }
+        public string Method { get; set; }
         public string File { get; set; }
-        public UserModel Creator { get; set; }
+        public UserModel UserID { get; set; }
     }
 }

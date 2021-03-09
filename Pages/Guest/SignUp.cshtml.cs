@@ -26,10 +26,10 @@ namespace RecipesGalorePRJ.Pages.Guest
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"INSERT INTO UserDbo (Name, EmailAddress, Password) VALUES (@FName, @Email, @Pwd)";
+                command.CommandText = @"INSERT INTO UserDBO (FirstName, EmailAddress, Password) VALUES (@FName, @Email, @Pwd)";
 
-                command.Parameters.AddWithValue("@FName", user.Name);
-                command.Parameters.AddWithValue("@Email", user.Email);
+                command.Parameters.AddWithValue("@FName", user.FirstName);
+                command.Parameters.AddWithValue("@Email", user.EmailAddress);
                 command.Parameters.AddWithValue("@Pwd", user.Password);
 
                 command.ExecuteNonQuery();

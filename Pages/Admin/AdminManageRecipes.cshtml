@@ -8,13 +8,13 @@
     @for (int i = 0; i < Model.recipesList.Count; i++)
     {
         <div class="each-recipe-container" style="display: inline; border: 1px solid white; padding-bottom: 15px; margin-bottom: 15px;">
-            <a style="color: white; text-decoration: none;" asp-page="/User/UserRecipeView" asp-route-id="@Model.recipesList[i].RecipeId">
+            <a style="color: white; text-decoration: none;" asp-page="/User/UserRecipesView" asp-route-id="@Model.recipesList[i].RecipeID">
                 <img class="recipe-thumbnail" src="~/Files/@Model.recipesList[i].File" style="height: 150px; width: 250px;" />
-                <p style="text-align:center">@Model.recipesList[i].RecipeName</p>
-                <p style="text-align:center">Cooking Time: @Model.recipesList[i].RecipeCookingTime Minutes</p>
+                <p style="text-align:center">@Model.recipesList[i].Name</p>
+                <p style="text-align:center">Cooking Time: @Model.recipesList[i].CookingTime Minutes</p>
             </a>
-            <a style="text-align:center; color: white; display: block;" asp-page="/Admin/AdminUpdate" asp-route-id="@Model.recipesList[i].RecipeId">Update</a>
-            <a style="text-align:center; color: white; display: block;" asp-page="/Admin/AdminDelete" asp-route-id="@Model.recipesList[i].RecipeId">Delete</a>
+            <a style="text-align:center; color: white; display: block;" asp-page="/Admin/AdminUpdateRecipes" asp-route-id="@Model.recipesList[i].RecipeID">Update</a>
+            <a style="text-align:center; color: white; display: block;" asp-page="/Admin/AdminDeleteRecipe" asp-route-id="@Model.recipesList[i].RecipeID">Delete</a>
         </div>
     }
 </div>

@@ -34,12 +34,12 @@ namespace RecipesGalorePRJ.Pages.User
 
                 while (reader.Read())
                 {
-                    RecipeClass.RecipeId = reader.GetInt32(0);
-                    RecipeClass.RecipeName = reader.GetString(1);
-                    RecipeClass.RecipeCuisineType = reader.GetString(2);
-                    RecipeClass.RecipeCookingTime = reader.GetString(3);
-                    RecipeClass.RecipeIngredients = reader.GetString(4);
-                    RecipeClass.RecipeMethod = reader.GetString(5);
+                    RecipeClass.RecipeID = reader.GetInt32(0);
+                    RecipeClass.Name = reader.GetString(1);
+                    RecipeClass.CuisineType = reader.GetString(2);
+                    RecipeClass.CookingTime = reader.GetString(3);
+                    RecipeClass.Ingredients = reader.GetString(4);
+                    RecipeClass.Method = reader.GetString(5);
                     RecipeClass.File = reader.GetString(6);
                 }
             }

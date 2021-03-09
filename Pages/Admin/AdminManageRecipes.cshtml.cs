@@ -26,7 +26,7 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM RecipeDbo";
+                command.CommandText = @"SELECT * FROM RecipeDBO";
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -35,12 +35,12 @@ namespace RecipesGalorePRJ.Pages.Admin
                 while (reader.Read())
                 {
                     RecipeModel rec = new RecipeModel();
-                    rec.RecipeId = reader.GetInt32(0);
-                    rec.RecipeName = reader.GetString(1);
-                    rec.RecipeCuisineType = reader.GetString(2);
-                    rec.RecipeCookingTime = reader.GetString(3);
-                    rec.RecipeIngredients = reader.GetString(4);
-                    rec.RecipeMethod = reader.GetString(5);
+                    rec.RecipeID = reader.GetInt32(0);
+                    rec.Name = reader.GetString(1);
+                    rec.CuisineType = reader.GetString(2);
+                    rec.CookingTime = reader.GetString(3);
+                    rec.Ingredients = reader.GetString(4);
+                    rec.Method = reader.GetString(5);
                     rec.File = reader.GetString(6);
 
                     recipesList.Add(rec);

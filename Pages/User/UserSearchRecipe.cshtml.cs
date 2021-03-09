@@ -31,11 +31,11 @@ namespace RecipesGalorePRJ.Pages.User
 
                 if (string.IsNullOrEmpty(SearchString))
                 {
-                    command.CommandText = @"SELECT * FROM Recipes WHERE RecipeName = t";
+                    command.CommandText = @"SELECT * FROM RecipeDBO WHERE Name = t";
                 }
                 else
                 {
-                    command.CommandText = @"SELECT * FROM Recipes WHERE (RecipeName LIKE '%' + @SearchS) OR (RecipeName LIKE @SearchS + '%')";
+                    command.CommandText = @"SELECT * FROM RecipeDBO WHERE (Name LIKE '%' + @SearchS) OR (Name LIKE @SearchS + '%')";
                     command.Parameters.AddWithValue("@SearchS", SearchString);
                 }
 
@@ -46,19 +46,22 @@ namespace RecipesGalorePRJ.Pages.User
                 while (reader.Read())
                 {
                     RecipeModel r = new RecipeModel();
-                    r.RecipeName = reader.GetString(1);
-                    r.RecipeCuisineType = reader.GetString(2);
-                    r.RecipeCookingTime = reader.GetString(3);
-                    r.RecipeIngredients = reader.GetString(4);
-                    r.RecipeMethod = reader.GetString(5);
+                    r.RecipeID = reader.GetInt32(0);
+                    r.Name = reader.GetString(1);
+                    r.CuisineType = reader.GetString(2);
+                    r.CookingTime = reader.GetString(3);
+                    r.Ingredients = reader.GetString(4);
+                    r.Method = reader.GetString(5);
                     r.File = reader.GetString(6);
+
                     RecipeList.Add(r);
                 }
                 reader.Close();
+
                 if (RecipeList.Count == 0)
                 {
                     RecipeModel r = new RecipeModel();
-                    r.RecipeName = "No Recipes Could Be Found.";
+                    r.Name = "No Recipes Could Be Found.";
                     RecipeList.Add(r);
                 }
             }

@@ -6,26 +6,26 @@
 }
 <div class="add-recipe-container">
     <form method="post" class="add-recipe-form" enctype="multipart/form-data">
-        <input type="hidden" asp-for="recipeUpdate.RecipeId" />
+        <input type="hidden" asp-for="recipeUpdate.RecipeID" />
         <div class="add-recipe-details">
             <label class="add-recipe-label">Recipe Name:</label>
-            <input asp-for="recipeUpdate.RecipeName" />
+            <input asp-for="recipeUpdate.Name" />
         </div>
         <div class="add-recipe-details">
             <label class="add-recipe-label">Recipe Cuisine Type:</label>
-            <input asp-for="recipeUpdate.RecipeCuisineType" />
+            <input asp-for="recipeUpdate.CuisineType" />
         </div>
         <div class="add-recipe-details">
             <label class="add-recipe-label">Recipe Cooking Time:</label>
-            <input asp-for="recipeUpdate.RecipeCookingTime" />
+            <input asp-for="recipeUpdate.CookingTime" />
         </div>
         <div class="add-recipe-details">
             <label class="add-recipe-label">Recipe Method:</label>
-            <input asp-for="recipeUpdate.RecipeIngredients" />
+            <input asp-for="recipeUpdate.Ingredients" />
         </div>
         <div class="add-recipe-details">
             <label class="add-recipe-label">Recipe Ingredients:</label>
-            <input asp-for="recipeUpdate.RecipeMethod" />
+            <input asp-for="recipeUpdate.Method" />
         </div>
         <div class="add-recipe-details">
             <label class="add-recipe-label">Recipe File:</label>

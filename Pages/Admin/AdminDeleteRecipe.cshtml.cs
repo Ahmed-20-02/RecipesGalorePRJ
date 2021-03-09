@@ -27,7 +27,7 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "SELECT * FROM RecipeDbo WHERE RecipeID = @ID";
+                command.CommandText = "SELECT * FROM RecipeDBO WHERE RecipeID = @ID";
                 command.Parameters.AddWithValue("@ID", id);
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -36,12 +36,12 @@ namespace RecipesGalorePRJ.Pages.Admin
 
                 while (reader.Read())
                 {
-                    recipeDelete.RecipeId = reader.GetInt32(0);
-                    recipeDelete.RecipeName = reader.GetString(1);
-                    recipeDelete.RecipeCuisineType = reader.GetString(2);
-                    recipeDelete.RecipeCookingTime = reader.GetString(3);
-                    recipeDelete.RecipeIngredients = reader.GetString(4);
-                    recipeDelete.RecipeMethod = reader.GetString(5);
+                    recipeDelete.RecipeID = reader.GetInt32(0);
+                    recipeDelete.Name = reader.GetString(1);
+                    recipeDelete.CuisineType = reader.GetString(2);
+                    recipeDelete.CookingTime = reader.GetString(3);
+                    recipeDelete.Ingredients = reader.GetString(4);
+                    recipeDelete.Method = reader.GetString(5);
                     recipeDelete.File = reader.GetString(6);
                 }
 
@@ -60,8 +60,8 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = "DELETE RecipeDbo WHERE RecipeID = @ID";
-                command.Parameters.AddWithValue("@ID", recipeDelete.RecipeId);
+                command.CommandText = "DELETE RecipeDBO WHERE RecipeID = @ID";
+                command.Parameters.AddWithValue("@ID", recipeDelete.RecipeID);
                 command.ExecuteNonQuery();
             }
             conn.Close();

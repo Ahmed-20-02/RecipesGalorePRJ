@@ -47,13 +47,13 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"INSERT INTO RecipeDbo (RecipeName, RecipeCuisineType, RecipeCookingTime, RecipeMethod, RecipeIngredients, RecipeFile) VALUES (@RN, @RCT, @RCOOKT, @RM, @RI, @RF)";
+                command.CommandText = @"INSERT INTO RecipeDBO (Name, CuisineType, CookingTime, Ingredients, Method, File) VALUES (@RN, @RCT, @RCOOKT, @RM, @RI, @RF)";
 
-                command.Parameters.AddWithValue("@RN", recipe.RecipeName);
-                command.Parameters.AddWithValue("@RCT", recipe.RecipeCuisineType);
-                command.Parameters.AddWithValue("@RCOOKT", recipe.RecipeCookingTime);
-                command.Parameters.AddWithValue("@RM", recipe.RecipeIngredients);
-                command.Parameters.AddWithValue("@RI", recipe.RecipeMethod);
+                command.Parameters.AddWithValue("@RN", recipe.Name);
+                command.Parameters.AddWithValue("@RCT", recipe.CuisineType);
+                command.Parameters.AddWithValue("@RCOOKT", recipe.CookingTime);
+                command.Parameters.AddWithValue("@RM", recipe.Ingredients);
+                command.Parameters.AddWithValue("@RI", recipe.Method);
                 command.Parameters.AddWithValue("@RF", RecipeFile.FileName);
 
                 command.ExecuteNonQuery();

@@ -62,11 +62,11 @@ namespace RecipesGalorePRJ.Pages
                 command.Connection = conn;
                 if (string.IsNullOrEmpty(FLTR) || FLTR == "All")
                 {
-                    command.CommandText = @"SELECT * FROM Recipes";
+                    command.CommandText = @"SELECT * FROM RecipeDBO";
                 }
                 else
                 {
-                    command.CommandText += @"SELECT * FROM Recipes WHERE FilterType = @FilterT";
+                    command.CommandText += @"SELECT * FROM RecipeDBO WHERE CuisineType = @FilterT";
                     command.Parameters.AddWithValue("@FilterT", FLTR);
                 }
 
@@ -77,14 +77,15 @@ namespace RecipesGalorePRJ.Pages
                 while (reader.Read())
                 {
                     RecipeModel rec = new RecipeModel();
-                    rec.RecipeId = reader.GetInt32(0);
-                    rec.RecipeName = reader.GetString(1);
-                    rec.RecipeCuisineType = reader.GetString(2);
-                    rec.RecipeCookingTime = reader.GetString(3);
-                    rec.RecipeIngredients = reader.GetString(4);
-                    rec.RecipeMethod = reader.GetString(5);
-                    rec.File = reader.GetString(7);
 
+                    rec.RecipeID = reader.GetInt32(0);
+                    rec.Name = reader.GetString(1);
+                    rec.CuisineType = reader.GetString(2);
+                    rec.CookingTime = reader.GetString(3);
+                    rec.Ingredients = reader.GetString(4);
+                    rec.Method = reader.GetString(5);
+                    rec.File = reader.GetString(7);
+ 
                     RecipeList.Add(rec);
                 }
                 reader.Close();

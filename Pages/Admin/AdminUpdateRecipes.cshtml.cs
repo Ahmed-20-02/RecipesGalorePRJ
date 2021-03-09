@@ -41,19 +41,19 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"SELECT * FROM RecipeDbo WHERE RecipeID = @ID";
+                command.CommandText = @"SELECT * FROM RecipeDBO WHERE RecipeID = @ID";
                 command.Parameters.AddWithValue("@ID", id);
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    recipeUpdate.RecipeId = reader.GetInt32(0);
-                    recipeUpdate.RecipeName = reader.GetString(1);
-                    recipeUpdate.RecipeCuisineType = reader.GetString(2);
-                    recipeUpdate.RecipeCookingTime = reader.GetString(3);
-                    recipeUpdate.RecipeIngredients = reader.GetString(4);
-                    recipeUpdate.RecipeMethod = reader.GetString(5);
+                    recipeUpdate.RecipeID = reader.GetInt32(0);
+                    recipeUpdate.Name = reader.GetString(1);
+                    recipeUpdate.CuisineType = reader.GetString(2);
+                    recipeUpdate.CookingTime = reader.GetString(3);
+                    recipeUpdate.Ingredients = reader.GetString(4);
+                    recipeUpdate.Method = reader.GetString(5);
                     recipeUpdate.File = reader.GetString(6);
                 }
             }
@@ -64,7 +64,6 @@ namespace RecipesGalorePRJ.Pages.Admin
         public IActionResult OnPost()
         {
             var FileToUpload = Path.Combine(_env.WebRootPath, "Files", RecipeFileUpdate.FileName);
-            Console.WriteLine("File Name : " + FileToUpload);
 
             using (var FStream = new FileStream(FileToUpload, FileMode.Create))
             {
@@ -80,14 +79,14 @@ namespace RecipesGalorePRJ.Pages.Admin
             using (SqlCommand command = new SqlCommand())
             {
                 command.Connection = conn;
-                command.CommandText = @"UPDATE RecipeDbo SET RecipeName = @RecName, RecipeCuisineType = @RecCT, RecipeCookingTime = @RecCOOKT, RecipeKeyword = @RecK, RecipeMethod = @RecM, RecipeIngredients = @RecI, RecipeFile = @RecF WHERE RecipeID = @RecID";
+                command.CommandText = @"UPDATE RecipeDBO SET Name = @RecName, CuisineType = @RecCT, CookingTime = @RecCOOKT, Ingredients = @RecI, Method = @RecM, File = @RecF WHERE RecipeID = @RecID";
 
-                command.Parameters.AddWithValue("@RecID", recipeUpdate.RecipeId);
-                command.Parameters.AddWithValue("@RecName", recipeUpdate.RecipeName);
-                command.Parameters.AddWithValue("@RecCT", recipeUpdate.RecipeCuisineType);
-                command.Parameters.AddWithValue("@RecCOOKT", recipeUpdate.RecipeCookingTime);
-                command.Parameters.AddWithValue("@RecM", recipeUpdate.RecipeIngredients);
-                command.Parameters.AddWithValue("@RecI", recipeUpdate.RecipeMethod);
+                command.Parameters.AddWithValue("@RecID", recipeUpdate.RecipeID);
+                command.Parameters.AddWithValue("@RecName", recipeUpdate.Name);
+                command.Parameters.AddWithValue("@RecCT", recipeUpdate.CuisineType);
+                command.Parameters.AddWithValue("@RecCOOKT", recipeUpdate.CookingTime);
+                command.Parameters.AddWithValue("@RecM", recipeUpdate.Ingredients);
+                command.Parameters.AddWithValue("@RecI", recipeUpdate.Method);
                 command.Parameters.AddWithValue("@RecF", RecipeFileUpdate.FileName);
 
                 command.ExecuteNonQuery();
@@ -95,7 +94,7 @@ namespace RecipesGalorePRJ.Pages.Admin
 
             conn.Close();
 
-            return RedirectToPage("/Admin/AdminIndex");
+            return RedirectToPage("/Admin/AdminViewAllRecipes");
         }
     }
 }
